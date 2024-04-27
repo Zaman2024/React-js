@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import { ThemeProvider } from './Context/Theme'
 import ThemeBtn from './Components/ThemeBtn'
@@ -16,9 +16,10 @@ const darkMode = () =>{
   // --actual change in theme---
 
   useEffect(() => {
-    const cardTheme = document.querySelector('html').classList.remove("light", "dark");
-    cardTheme.add(themeMode)
-  }, [])
+    // const cardTheme = document.querySelector('html').classList.remove("light", "dark");
+    document.querySelector('html').classList.remove("light", "dark")
+    document.querySelector('html').classList.add(themeMode)
+  }, [themeMode])
   
 
   return (
