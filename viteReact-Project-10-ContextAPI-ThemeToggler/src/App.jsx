@@ -1,18 +1,36 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { ThemeProvider } from './Context/Theme'
+import ThemeBtn from './Components/ThemeBtn'
+import Card from './Components/Card'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [themeMode, setThemeMode] = useState('light')
+
+const lightMode = () =>{
+    setThemeMode('light')
+  }
+const darkMode = () =>{
+    setThemeMode('dark')
+  }
+  // --actual change in theme---
+
+  useEffect(() => {
+    const cardTheme = document.querySelector('html').classList.remove("light", "dark");
+    cardTheme.add(themeMode)
+  }, [])
+  
 
   return (
-    <>
+    <ThemeProvider value={{themeMode, lightMode, darkMode}}>
       <div>
-        <h1 className='bg-slate-700'>Zaman</h1>
+        <ThemeBtn />
+      </div>
+      <div>
+        <Card />
       </div>
       
-    </>
+    </ThemeProvider>
   )
 }
 
