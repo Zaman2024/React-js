@@ -1,22 +1,47 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import { TodoProvider } from "./Context";
+import TodoForm from "./Components/TodoForm";
+import TodoItems from "./Components/TodoItems";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [todos, setTodos] = useState([]);
+
+  const addTodo = (title) => {
+    setTodos((prev) => [{ id: Date.now(), ...title }, ...prev]);
+  };
+
+  const updateTodo = (id, title) => {
+    setTodos((prev) =>
+      prev.map((prevTitle) => (prevTodo.id === id ? title : prevTitle))
+    );
+  };
+  const deleteTodo = (id) => {
+    setTodos((prev) => prev.filter((todo) => todo.id !== id));
+  };
+
+  const toggleComplete = (id) => {
+    setTodos((prev) =>prev.map((prevTodo)=> prevTodo.id === id ? {...prevTodo, completed: !prevTodo.completed} : prevTodo))
+  };
 
   return (
-    <>
+    <TodoProvider value={{todos, addTodo, updateTodo, deleteTodo, toggleComplete }}>
       <div>
-        <input type='text'
-        value={''}
-        placeholder='Todo'
-        onChange={''}
-        />
-        <button className='bg-blue-500 text-white' onClick={''}>add</button>
+        <div>
+          <TodoForm />
+        </div>
+        <div>
+          {/*Loop and add todo items here*/}
+          {todos.map((todo) => (
+            <div key ={todo.id}
+            >
+              <TodoItems/>
+            </div>
+          ))}
+        </div>
       </div>
-      
-    </>
-  )
+    </TodoProvider>
+  );
 }
 
-export default App
+export default App;
