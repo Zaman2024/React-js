@@ -7,8 +7,8 @@ import "./App.css";
 function App() {
   const [todos, setTodos] = useState([]);
 
-  const addTodo = (todo) => {
-    setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev]);
+  const addTodo = (title) => {
+    setTodos((prev) => [{ id: Date.now(), ...title }, ...prev]);
   };
 
   const updateTodo = (id, title) => {
