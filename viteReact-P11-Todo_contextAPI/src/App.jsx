@@ -7,15 +7,16 @@ import "./App.css";
 function App() {
   const [todos, setTodos] = useState([]);
 
-  const addTodo = (title) => {
-    setTodos((prev) => [{ id: Date.now(), ...title }, ...prev]);
+  const addTodo = (todo) => {
+    setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev]);
   };
 
   const updateTodo = (id, title) => {
     setTodos((prev) =>
-      prev.map((prevTitle) => (prevTodo.id === id ? title : prevTitle))
+      prev.map((prevTodo) => (prevTodo.id === id ? title : prevTodo))
     );
   };
+
   const deleteTodo = (id) => {
     setTodos((prev) => prev.filter((todo) => todo.id !== id));
   };
@@ -26,7 +27,6 @@ function App() {
 
   useEffect(()=>{
     const todos = JSON.parse(localStorage.getItem('todos'))
-
     if (todos && todos.length > 0) {
       setTodos(todos)
     }
@@ -42,12 +42,13 @@ function App() {
         <div>
           <TodoForm />
         </div>
+
         <div>
           {/*Loop and add todo items here*/}
           {todos.map((todo) => (
             <div key ={todo.id}
             >
-              <TodoItems/>
+              <TodoItems todo={todo} />
             </div>
           ))}
         </div>
