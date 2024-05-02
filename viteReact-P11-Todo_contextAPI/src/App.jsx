@@ -7,13 +7,13 @@ import "./App.css";
 function App() {
   const [todos, setTodos] = useState([]);
 
-  const addTodo = (title) => {
-    setTodos((prev) => [{ id: Date.now(), ...title }, ...prev]);
+  const addTodo = (todo) => {
+    setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev]);
   };
 
-  const updateTodo = (id, title) => {
+  const updateTodo = (id, todo) => {
     setTodos((prev) =>
-      prev.map((prevTodo) => (prevTodo.id === id ? title : prevTodo))
+      prev.map((prevTodo) => (prevTodo.id === id ? todo : prevTodo))
     );
   };
 
