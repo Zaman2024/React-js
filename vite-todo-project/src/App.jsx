@@ -12,17 +12,21 @@ const addTodo = (todo) => {
 }
 
 const updateTodo = (id, todo) => {
-  setTodos((prev) => prev.map((prevTodo)=> prevTodo.id === id ? todo : prevTodo))
+  setTodos((prev) => prev.map((prevTodo)=> (prevTodo.id === id ? todo : prevTodo)))
 }
 
 const deleteTodo = (id) => {
-  setTodos((prevTodo) =>{})
+  setTodos((prev) => prev.filter((todo) => todo.id !== id ))
+}
+
+const toggleComplete = () =>{
+  setTodos((prev) => prev.map((prevTodo) => prevTodo.id ===id ? {...prevTodo, completed : !prevTodo.completed}: prevTodo ))
 }
 
 
 
   return (
-    <TodoProvider value = {{todos, addTodo, updateTodo, deleteTodo}}>
+    <TodoProvider value = {{todos, addTodo, updateTodo, deleteTodo, toggleComplete}}>
 
       <div>
         <TodoForm/>

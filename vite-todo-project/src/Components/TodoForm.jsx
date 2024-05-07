@@ -12,7 +12,7 @@ function TodoForm() {
     <form onSubmit={add}
     className='bg-slate-300 '
     >
-      <h1 className='bg-slate-800 text-white'>Zaman</h1>
+      <h1 className='bg-slate-800 text-white'>Manage Todos</h1>
       <input 
         type='text'
         value={todo}
