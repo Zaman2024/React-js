@@ -19,7 +19,7 @@ const deleteTodo = (id) => {
   setTodos((prev) => prev.filter((todo) => todo.id !== id ))
 }
 
-const toggleComplete = () =>{
+const toggleComplete = (id) =>{
   setTodos((prev) => prev.map((prevTodo) => prevTodo.id ===id ? {...prevTodo, completed : !prevTodo.completed}: prevTodo ))
 }
 
@@ -45,7 +45,12 @@ useEffect(() => {
         <TodoForm/>
       </div>
       <div>
-        <TodoItems/>
+        {todos.map((todo) => (
+          <div key={todo.id}
+          >
+              <TodoItems todo = {todo} />
+          </div>
+        ))} 
       </div>
       
     </TodoProvider>
