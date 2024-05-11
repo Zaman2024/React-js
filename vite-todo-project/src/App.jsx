@@ -19,8 +19,8 @@ const deleteTodo = (id) => {
   setTodos((prev) => prev.filter((todo) => todo.id !== id ))
 }
 
-const toggleComplete = (id) =>{
-  setTodos((prev) => prev.map((prevTodo) => prevTodo.id ===id ? {...prevTodo, completed : !prevTodo.completed}: prevTodo ))
+const toggleCompleted = (id) =>{
+  setTodos((prev) => prev.map((prevTodo) => prevTodo.id === id ? {...prevTodo, completed : !prevTodo.completed}: prevTodo ))
 }
 
 useEffect(() => {
@@ -39,11 +39,11 @@ useEffect(() => {
 }, [todos])
 
   return (
-    <TodoProvider value = {{todos, addTodo, updateTodo, deleteTodo, toggleComplete}}>
+    <TodoProvider value = {{todos, addTodo, updateTodo, deleteTodo, toggleCompleted}}>
 
-      <div>
+      <div className='bg-slate-300 pb-2'>
         <TodoForm/>
-      </div>
+      
       <div>
         {todos.map((todo) => (
           <div key={todo.id}
@@ -52,7 +52,7 @@ useEffect(() => {
           </div>
         ))} 
       </div>
-      
+      </div>
     </TodoProvider>
   )
 }
