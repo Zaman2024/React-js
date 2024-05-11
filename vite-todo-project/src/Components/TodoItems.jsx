@@ -6,7 +6,7 @@ function TodoItems({todo}) {
   const [TodoMsg, setTodoMsg] = useState(todo.todo)
   const {updateTodo, deleteTodo, toggleComplete} = useTodo()
   return (
-    <div className='m-1 px-2 py-1'>
+    <div className='m-1 px-2 py-1 bg-slate-300'>
       <input
         type='checkbox'
         checked ={todo.completed}
@@ -19,6 +19,8 @@ function TodoItems({todo}) {
         value={TodoMsg}
         onChange={(e) =>setTodoMsg(e.target.value)}
         />
+
+        <button onClick={deleteTodo}>delet</button>
     </div>
   )
 }
