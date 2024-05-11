@@ -6,15 +6,22 @@ function TodoItems({todo}) {
   const [todoMsg, setTodoMsg] = useState(todo.todo)
   const {updateTodo, deleteTodo, toggleComplete} = useTodo()
 
-  const editTodo = () => {
-    updateTodo(todo.id, {...todo, todo: todoMsg})
+
+
+const editTodo = () =>{
+  updateTodo(todo.id, {...todo, todo: todoMsg})
     setIsTodoEditable(false)
-  }
+}
 
+const toggleCompleted = () => {
 
+  toggleComplete(todo.id)
+}
 
-
-
+// const saveBtn = () => {
+//   const Btn = Document.getElementById('Btn')
+//   Btn.innerHTML = 'Save'
+// }
 
 
   return (
@@ -29,22 +36,35 @@ function TodoItems({todo}) {
         type="checkbox"
         className="cursor-pointer"
         checked={todo.completed}
-        onChange={toggleComplete}
+        onChange={toggleCompleted}
        />
 
       <input 
         type='text'
-        value={TodoMsg}
+        value={todoMsg}
         onChange={(e) =>setTodoMsg(e.target.value)}
         readOnly = {!isTodoEditable}
-        className={`border outline-none w-1/2 bg-transparent rounded-lg ${
-          isTodoEditable ? "border-black/10 px-2" : "border-transparent"
+        className={`border outline-none w-full bg-transparent rounded-lg ${
+          isTodoEditable ? "border-black/10 px-1" : "border-transparent"
       } ${todo.completed ? "line-through" : ""}`}
         />
 
-        <button onClick={deleteTodo}>"fa-solid fa-folder"</button>
-
-        <button onClick={deleteTodo}>delet</button>
+        <button onClick={() => {
+          
+          if (todo.completed) return;
+          if(isTodoEditable) {
+            editTodo();
+          }else setIsTodoEditable((prev) => !prev)
+        }} 
+        disabled={todo.completed}
+        >
+          {isTodoEditable ? "📁" : "✏️"}
+          
+        </button>
+        <button onClick={() => deleteTodo(todo.id)} 
+        className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0">
+          ❌
+        </button>
     </div>
   )
 }
