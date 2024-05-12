@@ -1,15 +1,29 @@
 import React, { useState } from "react";
 import { useTodo } from "../ContextAPI/TodoContext";
+import TodoForm from "./TodoForm";
 
 function TodoItems({ todo }) {
   const [isTodoEditable, setIsTodoEditable] = useState(false);
   const [todoMsg, setTodoMsg] = useState(todo.todo);
   const { updateTodo, deleteTodo, toggleComplete } = useTodo();
 
+  
+
+
   const editTodo = () => {
     updateTodo(todo.id, { ...todo, todo: todoMsg });
     setIsTodoEditable(false);
   };
+
+  const savebtn =()=>{
+    if(isTodoEditable){
+      Btn.innerText = 'Save'
+      
+    }else{
+      Btn.innerText= 'Add'
+    }
+    
+  }
 
   const toggleCompleted = () => {
     toggleComplete(todo.id);
@@ -48,12 +62,15 @@ function TodoItems({ todo }) {
         onClick={() => {
           if (todo.completed) return;
           if (isTodoEditable) {
+            
             editTodo();
+            
           } else setIsTodoEditable((prev) => !prev);
         }}
         disabled={todo.completed}
       >
         {isTodoEditable ? "📁" : "✏️"}
+        {savebtn()}
       </button>
 
       {/* Delete Todo */}

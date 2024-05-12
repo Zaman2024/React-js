@@ -19,7 +19,7 @@ function TodoForm() {
       <div className="flex justify-center items-center mx-20">
         <input type="text" value={todo} onChange={(e) => setTodo(e.target.value)} placeholder="Write Todos" className="w-full p-2 rounded-s-lg outline-none bg-white/70" />
 
-        <button type="Submit" className="bg-green-700 text-white p-2 rounded-e-lg">
+        <button id="Btn" type="Submit" className="bg-green-700 text-white p-2 rounded-e-lg" >
           Add
         </button>
       </div>
