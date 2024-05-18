@@ -1,17 +1,20 @@
-import { useState } from 'react'
+
+import { Provider } from 'react-redux'
 
 import './App.css'
+import { store } from './Store/store'
+// import {TodoForm} from '../src/components/TodoForm'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <h1 className='bg-slate-600 text-white'>Zaman</h1>
-      </div>
+
+      <Provider store={store}>
+        <TodoForm/>
+
+      </Provider>
       
-    </>
+
   )
 }
 
