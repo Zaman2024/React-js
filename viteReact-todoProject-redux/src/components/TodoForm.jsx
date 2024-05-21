@@ -10,6 +10,7 @@ const handlerSubmit = (e) => {
     e.preventDefault()
 
     dispatch(addTodo(input))
+    setInput('')
 }
 
   return (
