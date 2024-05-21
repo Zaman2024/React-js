@@ -8,7 +8,7 @@ function TodoForm() {
 
 const handlerSubmit = (e) => {
     e.preventDefault()
-
+    
     dispatch(addTodo(input))
 }
 
@@ -21,7 +21,7 @@ const handlerSubmit = (e) => {
             placeholder='Write Todos'
             onChange={(e) =>setInput(e.target.value)}
         />
-      
+      <button type='submit'>Add</button>
     </form>
   )
 }
