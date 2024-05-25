@@ -11,7 +11,7 @@ function TodoList({todo}) {
 
   return (
     <>
-       <div  className='flex flex-col gap-2 border bg-slate-600 border-black/50 rounded-lg mx-60 px-3 py-1.5 shadow-sm shadow-white/50 duration-300  text-black list-none'>
+       <div  className='flex flex-col border bg-slate-600 border-black/50 rounded-lg mx-60 px-3 py-1.5 shadow-sm shadow-white/50 duration-300  text-black list-none'>
        {todos.map((todo) => (
         <li key={todo.id}>
            { todo.text}
@@ -22,7 +22,7 @@ function TodoList({todo}) {
                   if (todo.completed) return;
 
                   if (isTodoEditable) {
-                      editTodo();
+                      updateTodo();
                   } else setIsTodoEditable((prev) => !prev);
               }}
               disabled={todo.completed}
