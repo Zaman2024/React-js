@@ -4,14 +4,14 @@ import { removeTodo } from "../feature/todo/todoSlice";
 import { updateTodo } from "../feature/todo/todoSlice";
 
 function TodoList() {
-  const [isTodoEditable, setIsTodoEditable] = useState(false);
-  const [todoMsg, setTodoMsg] = useState();
+  // const [isTodoEditable, setIsTodoEditable] = useState(false);
+  // const [todoMsg, setTodoMsg] = useState();
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
 
   const editTodo = () => {
     updateTodo(todos.id, { ...todos, todo: todoMsg });
-    setIsTodoEditable(false);
+
   };
 
   return (
@@ -23,7 +23,7 @@ function TodoList() {
            { todo.text}
 
            <div className='flex float-right gap-2 '>
-            <button onClick={() => updateTodo}
+            <button onClick={() => todos(updateTodo(todo.id))}
             >
               Edit
             </button>
