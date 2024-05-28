@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeTodo } from "../feature/todo/todoSlice";
 import { updateTodo } from "../feature/todo/todoSlice";
 
-function TodoList({ todo }) {
+function TodoList() {
   const [isTodoEditable, setIsTodoEditable] = useState(false);
-  const [todoMsg, setTodoMsg] = useState(todos.todo);
+  const [todoMsg, setTodoMsg] = useState();
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
 
