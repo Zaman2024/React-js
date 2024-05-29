@@ -15,7 +15,8 @@ const handlerSubmit = (e) => {
 
   return (
     <form onSubmit={handlerSubmit}>
-        <h1 className='bg-slate-600 text-white'>Todos with React-Redux</h1>
+        <h1 className='flex flex-center items-center w-full mx-60 py-1 px-5 rounded-t-lg bg-slate-600 text-white'>Todos with React-Redux</h1>
+        
         <div className="flex flex-center items-center bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 mx-60 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
         <input
             type='text'
