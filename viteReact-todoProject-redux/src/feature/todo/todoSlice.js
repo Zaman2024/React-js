@@ -20,10 +20,19 @@ export const todoSlice = createSlice({
             state.todos = state.todos.filter((todo) => todo.id !== action.payload)
         },
 
-        updateTodo : (state, action) => {
-            state.todos = state.todos.map((prevTodo) => prevTodo.id === action.payload)
+        // updateTodo : (state, action) => {
+        //     state.todos = state.todos.map((prevTodo) => prevTodo.id === action.payload.id)
+            
+        // },
 
-        },
+        updateTodos: (state, action) => {
+            return state.map((todo) => {
+              if (todo.id === action.payload.id) {
+                return {...todo,item: action.payload.item,};
+              }
+                return todo;
+            });
+          },
     }
 })
 

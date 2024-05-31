@@ -13,16 +13,6 @@ function App() {
       <Provider store={store}>
         <TodoForm/>
         <TodoList/>
-
-
-        {todos.map((todo) => (
-            <div key ={todo.id}
-            className='w-full'
-            >
-              <TodoItems todo={todo} />
-            </div>
-          ))}
-
       </Provider>
       
 

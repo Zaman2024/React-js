@@ -8,24 +8,28 @@ function TodoList() {
   const [todoMsg, setTodoMsg] = useState();
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
+  console.log(updateTodo)
 
-  const editTodo = () => {
-    updateTodo(todos.id, { ...todos, todo: todoMsg });
+  const editTodo = (todo) => {
+    // updateTodo(todos.id, { ...todos, todo: todoMsg });
+    updateTodo({...todo,item: action.payload.item,});
+
 
   };
 
   return (
     <>
-      <div className="flex flex-col gap-2 border bg-slate-600 border-black/50 rounded-lg mx-60 px-3 py-1.5 shadow-sm shadow-white/50 duration-300  text-black list-none text-white">
+      <ul 
+      className="flex flex-col gap-2 border bg-slate-600 border-black/50 rounded-lg mx-60 px-3 py-1.5 shadow-sm shadow-white/50 duration-300  text-black list-none text-white">
         
        {todos.map((todo) => (
-        <div key={todo.id}>
+        <li key={todo.id}>
            { todo.text}
            
 
            <div className='flex float-right gap-2 '>
             <button 
-              onClick={(e) => setTodoMsg(updateTodo(todo.text))}
+              onClick={(e) => updateTodo(todo.id)}
             >
               Edit
             </button>
@@ -35,11 +39,11 @@ function TodoList() {
            >X</button>
            </div>
 
-        </div>
+        </li>
        ))}
 
         
-      </div>
+      </ul>
     </>
   );
 }
