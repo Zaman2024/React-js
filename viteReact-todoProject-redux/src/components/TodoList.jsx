@@ -8,15 +8,14 @@ function TodoList() {
   const [todoMsg, setTodoMsg] = useState();
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
-  console.log(updateTodo)
+
 
   const editTodo = (todo) => {
     // updateTodo(todos.id, { ...todos, todo: todoMsg });
-    updateTodo({...todo,item: action.payload.item,});
-
+    const myUpdate = updateTodo({...todo,item: action.payload.item,});
 
   };
-
+ 
   return (
     <>
       <ul 
@@ -29,7 +28,7 @@ function TodoList() {
 
            <div className='flex float-right gap-2 '>
             <button 
-              onClick={(e) => updateTodo(todo.id)}
+              onClick={(e) => editTodo (updateTodo(todo.id))}
             >
               Edit
             </button>
