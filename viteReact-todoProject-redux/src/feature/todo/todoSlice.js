@@ -24,7 +24,7 @@ export const todoSlice = createSlice({
             state.todos = state.todos.filter((todo) => todo.id !== action.payload);
         },
 
-        toggleInputForm :(state) => {
+        toggleInputForm :(state, action) => {
             state.toggleForm = ! state.toggleForm ;
             state.todoUpdate = {...state.todoUpdate, ...action.payload};
         }
@@ -47,6 +47,6 @@ export const todoSlice = createSlice({
     }
 })
 
-export const {addTodo, removeTodo, updateTodo} = todoSlice.actions
+export const {addTodo, removeTodo, toggleInputForm } = todoSlice.actions
 
 export const todoReducer = todoSlice.reducer
