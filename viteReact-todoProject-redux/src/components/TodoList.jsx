@@ -22,7 +22,8 @@ function TodoList() {
       className="flex flex-col gap-2 border bg-slate-600 border-black/50 rounded-lg mx-60 px-3 py-1.5 shadow-sm shadow-white/50 duration-300  text-black list-none text-white">
         
        {todos.map((todo) => (
-        <li className="gap-2" key={todo.id}>
+        <li className="mt-3 flex justify-between items-center bg-zinc-800 px-4 py-2 rounded" 
+        key={todo.id}>
            { todo.text}
            
 
