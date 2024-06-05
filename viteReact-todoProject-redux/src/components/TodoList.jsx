@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeTodo } from "../feature/todo/todoSlice";
-import { updateTodo } from "../feature/todo/todoSlice";
+import { toggleInputForm } from "../feature/todo/todoSlice";
+import TodoForm from "./TodoForm";
+import UpdateForm from "./UpdateForm";
+
 
 function TodoList() {
-  const [isTodoEditable, setIsTodoEditable] = useState(false);
-  const [todoMsg, setTodoMsg] = useState();
   const todos = useSelector((state) => state.todos);
+  // const toggleForm = useSelector((state) => state.todos.toggleForm)
   const dispatch = useDispatch();
 
 
@@ -18,6 +20,9 @@ function TodoList() {
  
   return (
     <>
+    
+
+
       <ul 
       className="flex flex-col gap-2 border bg-slate-600 border-black/50 rounded-lg mx-60 px-3 py-1.5 shadow-sm shadow-white/50 duration-300  text-black list-none text-white">
         
@@ -29,7 +34,8 @@ function TodoList() {
 
            <div className='flex float-right gap-2 '>
             <button 
-              onClick={(e) => editTodo (updateTodo(todo.id))}
+              onClick={(e) => dispatch (toggleInputForm(todo.id))}
+
             >
               Edit
             </button>
