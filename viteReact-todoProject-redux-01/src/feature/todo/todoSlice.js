@@ -4,8 +4,9 @@ const initialState = {
   todos:[
       {id : nanoid(), text : 'Hello World'},
       {id : nanoid(), text : 'Zaman'}
-  ]
-  
+  ],
+  toggleForm : true,
+  todoUpdate : {} 
 }
 
 export const todoSlice = createSlice({

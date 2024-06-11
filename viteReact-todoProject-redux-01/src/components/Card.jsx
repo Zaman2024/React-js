@@ -16,7 +16,6 @@ function Card() {
         {/* <UpdateForm/> */}
       </div>
       <div>
-        {/* <TodoList/> */}
         <ul 
       className="flex flex-col gap-2 border bg-slate-600 border-black/50 rounded-lg px-1 py-0.5 shadow-sm shadow-white/50 duration-200  text-black list-none text-white">
         
