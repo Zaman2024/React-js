@@ -1,36 +1,34 @@
-import React,{useState} from 'react'
-import {useDispatch} from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { addTodo } from '../feature/todo/todoSlice'
 
-
 function TodoForm() {
-    const [input, setInput] = useState('')
-    const dispatch = useDispatch()
+  const [input, setInput] = useState('')
+  const dispatch = useDispatch()
 
-const handlerSubmit = (e) => {
-    e.preventDefault()
+const handleSubmit = (e) => {
+  e.preventDefault()
 
-    dispatch(addTodo(input))
-    setInput('')
+  dispatch(addTodo(input))
+  setInput('')
 }
 
   return (
-    <form onSubmit={handlerSubmit}>
-        <h1 className='flex justify-center items-center  mx-60 py-1 px-5 rounded-t-lg bg-slate-600 text-white text-xl'>Todos with React-Redux</h1>
-        
-        <div className="flex flex-center items-center bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 mx-60 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+    <form onSubmit={handleSubmit} >
+      <div className='w- 1/4 flex justify-center items-center m-3 w-auto'>
         <input
-            type='text'
-            value={input}
-            placeholder='Write Todos'
-            onChange={(e) =>setInput(e.target.value)}
-            className='w-full py-1.5 px-6 rounded-s-lg text-black outline-none'
-            
+        type='text'
+        value={input}
+        placeholder='Add Todo'
+        onChange={(e) => setInput(e.target.value)}
+        className='rounded-s-xl h-10 outline-none px-2 text-lg w-full ' 
         />
-      <button type='submit'
-        className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded-e-lg text-lg"
-      >Add</button>
+        <button 
+        type='submit'
+        className=' bg-green-800 text-white p-2 rounded-e-xl'
+        >Add</button>
       </div>
+      
     </form>
   )
 }
