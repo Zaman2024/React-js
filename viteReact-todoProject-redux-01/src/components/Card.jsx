@@ -1,5 +1,6 @@
 import React from "react";
 import { removeTodo } from "../feature/todo/todoSlice";
+import { clearTodos } from "../feature/todo/todoSlice";
 import TodoForm from "./TodoForm";
 import UpdateForm from "./UpdateForm";
 import { useSelector, useDispatch } from "react-redux";
@@ -43,7 +44,9 @@ function Card() {
         
       </ul>
       </div>
-      <button className="bg-purple-700 text-white text-2xl px-3 py-1 rounded-xl mt-16 ">
+      <button className="bg-purple-700 text-white text-2xl px-3 py-1 rounded-xl mt-16 "
+      onClick={() => dispatch(clearTodos())}
+      >
         Clear
       </button>
     </div>
