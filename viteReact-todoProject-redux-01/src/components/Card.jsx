@@ -1,21 +1,29 @@
 import React from "react";
-import { removeTodo } from "../feature/todo/todoSlice";
-import { clearTodos } from "../feature/todo/todoSlice";
-import TodoForm from "./TodoForm";
-import UpdateForm from "./UpdateForm";
+import { removeTodo, todoUpdated } from "../feature/todo/todoSlice";
+import { clearTodos, toggleInputform } from "../feature/todo/todoSlice";
+import TodoForm from "../components/TodoForm"
+import UpdateForm from "../components/UpdateForm"
+
+
 import { useSelector, useDispatch } from "react-redux";
 
 function Card() {
     const todos = useSelector((state) => state.todos)
+    const toggleForm = useSelector((state) => state.toggleForm)
     const dispatch = useDispatch();
     console.log(todos)
+
+
+
   return (
     <div className="bg-slate-700  mx-60 p-5 rounded-xl border-4 border-white/50">
+      
       <div>
         <h1 className="text-white">Zaman</h1>
-        <TodoForm />
-        {/* <UpdateForm/> */}
+        {toggleForm ? <TodoForm /> : <UpdateForm/>}
+     
       </div>
+
       <div>
         <ul 
       className="flex flex-col gap-2 border bg-slate-600 border-black/50 rounded-lg px-1 py-0.5 shadow-sm shadow-white/50 duration-200  text-black list-none text-white">
@@ -28,7 +36,11 @@ function Card() {
 
            <div className='flex float-right gap-2 '>
             <button 
-
+              onClick={() => dispatch(toggleInputform({
+                id : todo.id,
+                text : todo.text
+              }))}
+              className={`px-4 py-2 rounded ${toggleInputform ? "bg-blue-700":"bg-green-700"}` }
             >
               Edit
             </button>

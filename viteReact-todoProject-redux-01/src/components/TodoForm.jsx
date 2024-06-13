@@ -29,7 +29,7 @@ function TodoForm() {
         />
         <button
           type="submit"
-          className=" bg-green-800 text-white p-2 rounded-e-xl"
+          className=" bg-green-800 text-white px-5 py-2 rounded-e-xl"
         >
           Add
         </button>
