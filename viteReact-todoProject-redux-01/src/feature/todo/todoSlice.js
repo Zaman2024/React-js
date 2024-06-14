@@ -3,7 +3,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 const initialState = {
   todos: [
     { id: nanoid(), text: "Hello World" },
-    { id: nanoid(), text: "Zaman" },
+    { id: nanoid(), text: "Todo with React-Redux" },
   ],
   toggleForm: true,
   todoUpdate: {},
