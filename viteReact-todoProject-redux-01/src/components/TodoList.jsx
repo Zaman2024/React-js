@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
 import { removeTodo, toggleInputform } from "../feature/todo/todoSlice";
 
 
 
-const TodoList = (todo) => {
-  // const todos = useSelector((state) => state.todos);
+const TodoList = (props) => {
   const dispatch = useDispatch()
  
   return (
@@ -13,13 +12,13 @@ const TodoList = (todo) => {
          className="flex justify-between items-center"
         >
            <div className="text-white">
-            <h1>{ todo.text}</h1>
+            <h1>{ props.text}</h1>
            </div>
            <div >
            <button
                   onClick={() => dispatch(toggleInputform({
-                        id: todo.id,
-                        text: todo.text,
+                        id: props.id,
+                        text: props.text,
                       })
                     )
                   }
@@ -30,7 +29,7 @@ const TodoList = (todo) => {
                   Edit
                 </button>
 
-           <button onClick={() => dispatch(removeTodo(todo.id))}
+           <button onClick={() => dispatch(removeTodo(props.id))}
             className="text-white bg-red-500 border-0 px-4 py-1 focus:outline-none hover:bg-red-600 rounded text-md"
            >X</button>
            </div>

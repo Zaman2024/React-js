@@ -1,11 +1,12 @@
 import React from "react";
-import { removeTodo, todoUpdated } from "../feature/todo/todoSlice";
-import { clearTodos, toggleInputform } from "../feature/todo/todoSlice";
+import { clearTodos,  } from "../feature/todo/todoSlice";
 import TodoForm from "../components/TodoForm";
 import UpdateForm from "../components/UpdateForm";
 import TodoList from "../components/TodoList";
-
 import { useSelector, useDispatch } from "react-redux";
+
+//----- For second mathod ----------
+// import { removeTodo, todoUpdated, toggleInputform } from "../feature/todo/todoSlice"; 
 
 function Card() {
   const todos = useSelector((state) => state.todos);
@@ -16,18 +17,18 @@ function Card() {
   return (
     <div className="bg-slate-700  mx-60 p-5 rounded-xl border-4 border-white/50">
       <div>
-        <h1 className="text-white">Zaman</h1>
+        <h1 className="text-white text-2xl font-semibold underline">Todo Project</h1>
         {toggleForm ? <TodoForm /> : <UpdateForm />}
       </div>
-      <ul 
+      <ul
       >
         
        {todos.map((todo) => (
-        <li className="mt-3 flex justify-between  bg-purple-800 px-4 py-2 rounded-xl text-white text-lg" 
+        <li className="w-full mt-3  bg-purple-800 px-4 py-2 rounded-xl text-white text-lg" 
         key={todo.id}>
-          { todo.text}
 
-           <TodoList/>
+
+           <TodoList id={todo.id} text={todo.text}/>
 
         </li>
        ))}
@@ -35,6 +36,7 @@ function Card() {
         
       </ul>
 
+      {/* ----- For second mathod ---------- */}
       {/* <div>
         <ul className="flex flex-col gap-2 border bg-slate-600 border-black/50 rounded-lg px-1 py-0.5 shadow-sm shadow-white/50 duration-200  text-black list-none text-white">
           {todos.map((todo) => (
@@ -73,7 +75,7 @@ function Card() {
         </ul>
       </div> */}
       <button
-        className="bg-purple-700 text-white text-2xl px-3 py-1 rounded-xl mt-16 "
+        className="bg-indigo-700 text-white text-2xl px-3 py-0.5 rounded-xl mt-16 border-1 border-slate-500 outline-2"
         onClick={() => dispatch(clearTodos())}
       >
         Clear
