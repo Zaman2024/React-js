@@ -1,2 +1,2 @@
 # React.js tutorials
-# all react project-2
+# all react project
