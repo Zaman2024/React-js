@@ -1,2 +1,2 @@
-# React.js tutorialshh
+# React.js tutorials
 # all react project
